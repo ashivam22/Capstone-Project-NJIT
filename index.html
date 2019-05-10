@@ -1,0 +1,159 @@
+<!--
+CS491 Project
+Configurable Port Listening System Trigger
+!-->
+<!--edited version v.1
+!-->
+------------------------------------------------------
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>proj</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/vue-select@latest"></script>
+
+</head>
+  
+
+<body>
+  <!--[if IE]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Main nav</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">One</a></li>
+        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <br />
+<div class="container">
+  <div class="row">
+      <div class="col s10">
+
+      </div>
+    <div class="col s2">
+        <a class="waves-effect waves-light btn right-align" id="send"><i class="material-icons left">send</i>send</a>
+    </div>
+  </div>
+
+</div>
+
+  <div id="app">
+      <h4>Add a rule</h4>
+    <div class="container">
+      <div class="row">
+        <div class="col s12">
+          <server :server="server" :port="port"></server>
+        </div>
+        <div class="row">
+          <div class="input-field col s4">
+            <select id="change-param">
+              <option value="Contains">Contains</option>
+              <option value="Starts with">Starts with</option>
+              <option value="Ends with">Ends with</option>
+              <option value="Doesn’t contain">Doesn’t contain</option>
+              <option value="Doesn’t start with">Doesn’t start with</option>
+              <option value="Doesn’t end with">Doesn’t end with</option>
+              <option value="Fuzzy">Fuzzy</option>
+            </select>
+            <label>Criteria</label>
+          </div>
+            <div class="input-field col s8">
+              <input placeholder="" id="rule-value" type="text" class="validate">
+              <label for="value">Put the value</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s9"></div>
+          <div class="col s3 offset-s9">
+            <a class="waves-effect waves-light btn" v-on:click="accept"><i class="material-icons left">check</i>accept</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+              <div class="collection" id="add-rule">
+                <a href="#!" class="collection-item">Contains</a>
+                <a href="#!" class="collection-item">Starts with</a>
+                <a href="#!" class="collection-item">Ends with</a>
+                <a href="#!" class="collection-item">Doesn’t contain</a>
+                <a href="#!" class="collection-item">Doesn’t start with</a>
+                <a href="#!" class="collection-item">Doesn’t end with</a>
+                <a href="#!" class="collection-item">Fuzzy</a>
+                </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s3 offset-s9">
+            <a class="waves-effect waves-light btn" v-on:click="add"><i class="material-icons left">add</i>add</a>
+          </div>
+        </div>
+
+
+      </div>
+<hr />
+<h4>Rules so far</h4>
+
+
+    <div class="container">
+      <div v-for="(rule, index) in rules">
+              <div class="col s12">
+                           <rule @remove="onRemove" @edit="onEdit" :contains="rule.Contains"
+                           :starts_with="rule.Starts_with" :ends_with="rule.Ends_with"
+                            :doesn_t_contain="rule.Doesn_t_contain"
+                          :doesn_t_start_with="rule.Doesn_t_start_with" :doesn_t_end_with="rule.Doesn_t_end_with" :Fuzzy="rule.Fuzzy" :index="index"
+                          ></rule>
+                           <!-- :ends_with="rule.Ends_with" :doesnt_contain="rule.Doesn@t_contain"></rule> -->
+
+            </div>
+             </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+    <!-- build:js scripts/vendor.js -->
+
+
+    <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+</body>
+
+</html>
+
+    <!-- build:js scripts/vendor.js -->	
+    
+        <!-- endbuild -->	
+    <!-- build:js scripts/main.js -->
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>

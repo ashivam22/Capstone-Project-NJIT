@@ -1,0 +1,26 @@
+<html>
+<head>
+	<title>Test UI for Capstone</title>
+	<style>
+		td{padding:2px;}
+	</style>
+</head>
+<body>
+<form action='http://localhost:4910' method='get'>
+	<h1>Connection Information</h1>
+	<table>
+	<tr><td>Enter IP address:</td><td><input type='text' required pattern="^([0-9]{1,3}\.){3}[0-9]{1,3}$" name='ip'></td></tr>
+	<tr><td>Enter port:</td><td><input type='text' required name='port'></td></tr>
+	</table><br>
+	<h1>Rule Specification</h1>
+	<table>
+	<tr><td>Contains:</td><td><input type='text' name='contains' value=''></td></tr>
+	<tr><td>Starts with:</td><td><input type='text' name='starts' value=''></td></tr>
+	<tr><td>Ends with:</td><td><input type='text' name='ends' value=''></td></tr>
+	<tr><td>Doesn't contain:</td><td><input type='text' name='d_contains' value=''></td></tr>
+	<tr><td>Doesn't start with:</td><td><input type='text' name='d_starts' value=''></td></tr>
+	<tr><td>Doesn't end with:</td><td><input type='text' name='d_ends' value=''></td></tr>
+	<tr><td>Fuzzy search:</td><td><input type='text' name='fuzzy' value=''></td></tr>
+	</table><br><br>
+	<input type='submit'>
+</form>

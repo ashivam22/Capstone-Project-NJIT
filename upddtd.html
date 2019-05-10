@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>proj</title>
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <!-- Place favicon.ico in the root directory -->
+  <!-- build:css styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+  <script src="new.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/vue-select@latest"></script>
+  <!-- Stylesheet -->
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.3.1/flatly/bootstrap.min.css">
+
+    <!-- jQuery & Bootstrap -->
+   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+
+  </head>
+
+<body>
+  <!--[if IE]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+  <nav>
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">Main nav</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">One</a></li>
+        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <br />
+
+<div id="app">
+  <div class="container">
+  <form action='http://localhost:4910' method='POST'>
+      <div class="col s12">
+          <server @rules="updateRules" :server="server" :port="port"></server>
+      </div>
+      <div class="row" id="add-rule">
+        <h1>Connection Information</h1>
+        <table>
+        <tr><td>Enter IP address:</td><td><input type='text' required pattern="^([0-9]{1,3}\.){3}[0-9]{1,3}$" name='ip' id="rule-value"></td></tr>
+        <tr><td>Enter port:</td><td><input type='text' required name='port' id="rule-value"></td></tr>
+        </table><br>
+      </div>
+      <div class="row" id="add-rule">
+        <h1>Rule Specification</h1>
+         <div class="col s4">
+          <select class="selectpicker" id="SpecificationRule" multiple data-live-search="true" >
+            <option value="Contains" class="collection-item" type="7">Contains</option>
+              <option class="collection-item" type="1" value="Starts with">Starts with</option>
+              <option class="collection-item" type="2" value="Ends with">Ends with</option>
+              <option class="collection-item" type="3" value="Doesnâ€™t contain">Doesnâ€™t contain</option>
+              <option class="collection-item" type="4" value="Doesnâ€™t start with">Doesnâ€™t start with</option>
+              <option class="collection-item" type="5" value="Doesnâ€™t end with">Doesnâ€™t end with</option>
+              <option class="collection-item" type="6" value="Fuzzy">Fuzzy</option>
+          </select>
+          <script type="text/javascript">
+            
+            var valuse=[];
+            $(document).on("change", "#SpecificationRule", function(){
+               document.getElementById("rules_so_fa").innerHTML="";
+               document.getElementById('rule_specification').innerHTML="";
+                var ids = $(this).find('option:selected').map(function() {
+                  var text=$(this).text();
+                  document.getElementById("rules_so_fa").innerHTML +="<input type='' name='' id='input"+ids+"' value='"+text+"''><br><br>";
+                  document.getElementById('rule_specification').innerHTML+="<input type='text' name='' id='inputText"+ids+"'><br><br>";
+                    return $(this).attr('type');    
+                }).get();
+                console.log(ids);
+
+            });
+          //$('select').selectpicker();
+          function addcolumn(){
+
+             var $value =$('option:selected',this).attr('type');
+             console.log($value);
+             
+           var check= $('option:selected').prop("selected");
+           if(check)
+           {
+              var id=$('option:selected',this).attr('data-id');
+              console.log(id);
+           }
+           
+            //alert("asdf");
+            //var classname = document.getElementsByClassName("selected");
+            //var i;
+            //for (i = 0; i < classname.length; i++) {
+            document.getElementsByClassName("selected").toggle
+              document.getElementById("rules_so_fa").innerHTML +="<input type='' name=''><br><br>";
+              //document.getElementById("content").innerHTML = JSON.stringify(items.detail);
+            //}
+          }
+          
+          </script>
+         <!-- <select id="change-param" class="browser-default">
+              <option value="Contains">Contains</option>
+              <option value="Starts with">Starts with</option>
+              <option value="Ends with">Ends with</option>
+              <option value="Doesnâ€™t contain">Doesnâ€™t contain</option>
+              <option value="Doesnâ€™t start with">Doesnâ€™t start with</option>
+              <option value="Doesnâ€™t end with">Doesnâ€™t end with</option>
+              <option value="Fuzzy">Fuzzy</option>
+          </select> -->
+        </div>
+        <div class="col s8" id="rule_specification">
+          <input type='text' value=''>
+        </div>
+        
+  
+          
+      </div>
+      <div class="col s2">
+        <input type="submit" class="waves-effect waves-light btn right-align" value="Send"></a>
+      </div>
+      <br>
+      <br>
+      <h1>Rules so far</h1>
+      <div class="rules_sofa" id="rules_so_fa">
+
+      <div v-for="(rule, index) in rules">
+              <div class="col s4">
+                           <rule @remove="onRemove" @edit="onEdit" :contains="rule.Contains"
+                           :starts_with="rule.Starts_with" :ends_with="rule.Ends_with"
+                            :doesn_t_contain="rule.Doesn_t_contain"
+                          :doesn_t_start_with="rule.Doesn_t_start_with" :doesn_t_end_with="rule.Doesn_t_end_with" :Fuzzy="rule.Fuzzy" :index="index"
+                          ></rule>
+                         <!--  :ends_with="rule.Ends_with" :doesnt_contain="rule.Doesn@t_contain"></rule>             -->
+
+            </div>
+             </div>
+
+
+    </div>
+    </div>
+  </form>
+    
+    
+
+  </div>
+
+
+<!--        <div class="col s12">
+          <server @rules="updateRules" :server="server" :port="port"></server>
+        </div>
+        <div class="row">
+          <div class="input-field col s4">
+            <select id="change-param">
+              <option value="Contains">Contains</option>
+              <option value="Starts with">Starts with</option>
+              <option value="Ends with">Ends with</option>
+              <option value="Doesnâ€™t contain">Doesnâ€™t contain</option>
+              <option value="Doesnâ€™t start with">Doesnâ€™t start with</option>
+              <option value="Doesnâ€™t end with">Doesnâ€™t end with</option>
+              <option value="Fuzzy">Fuzzy</option>
+            </select>
+            <label>Criteria</label>
+          </div>
+            <div class="input-field col s8">
+              <input placeholder="" id="rule-value" type="text" class="validate">
+              <label for="value">Put the value</label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s9"></div>
+          <div class="col s3 offset-s9">
+            <a class="waves-effect waves-light btn" v-on:click="accept"><i class="material-icons left">check</i>accept</a>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s12">
+              <div class="collection" id="add-rule">
+                <a href="#!" class="collection-item">Contains</a>
+                <a href="#!" class="collection-item">Starts with</a>
+                <a href="#!" class="collection-item">Ends with</a>
+                <a href="#!" class="collection-item">Doesnâ€™t contain</a>
+                <a href="#!" class="collection-item">Doesnâ€™t start with</a>
+                <a href="#!" class="collection-item">Doesnâ€™t end with</a>
+                <a href="#!" class="collection-item">Fuzzy</a>
+                </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col s3 offset-s9">
+            <a class="waves-effect waves-light btn" v-on:click="add"><i class="material-icons left">add</i>add</a>
+          </div>
+        </div>
+      </div>
+<hr />
+<h4>Rules so far</h4>
+    <div class="container">
+      <div v-for="(rule, index) in rules">
+              <div class="col s12">
+                           <rule @remove="onRemove" @edit="onEdit" :contains="rule.Contains"
+                           :starts_with="rule.Starts_with" :ends_with="rule.Ends_with"
+                            :doesn_t_contain="rule.Doesn_t_contain"
+                          :doesn_t_start_with="rule.Doesn_t_start_with" :doesn_t_end_with="rule.Doesn_t_end_with" :Fuzzy="rule.Fuzzy" :index="index"
+                          ></rule>
+                           :ends_with="rule.Ends_with" :doesnt_contain="rule.Doesn@t_contain"></rule> 
+            </div>
+             </div>
+    </div>
+</div> -->
+
+
+
+
+
+    <!-- build:js scripts/vendor.js -->
+
+
+    <!-- endbuild -->
+    <!-- build:js scripts/main.js -->
+    
+    <!-- endbuild -->
+</body>
+
+</html>
